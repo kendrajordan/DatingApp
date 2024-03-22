@@ -1,0 +1,38 @@
+<mat-toolbar>
+
+    <span>Dating App</span>
+    <mat-nav-list class="list-horizontal" *ngIf="loggedIn == true">
+          <mat-list-item [activated]="true">
+             <a matListItemTitle routerLink="/members" routerLinkActive="active">Matches</a>
+          </mat-list-item>
+          <mat-list-item [activated]="false">
+            <a matListItemTitle routerLink="/lists" routerLinkActive="active">List</a>
+         </mat-list-item>  
+         <mat-list-item [activated]="false">
+            <a matListItemTitle routerLink="/messages" routerLinkActive="active">Messages</a>
+         </mat-list-item> 
+      </mat-nav-list>
+      <mat-nav-list class="list-horizontal">
+         <mat-list-item [activated]="false">
+            <a matListItemTitle routerLink="/errors" routerLinkActive="active">Errors</a>
+         </mat-list-item> 
+      </mat-nav-list>
+      <form #loginForm="ngForm" class="d-flex" (ngSubmit)="login()" autocomplete="off" *ngIf="loggedIn == false">
+          
+        <mat-form-field >
+          <input matInput
+          name="username"
+          [(ngModel)]="model.username"
+           placeholder="Username" value="">
+        </mat-form-field>
+      
+        <mat-form-field>
+            <input matInput 
+            name="password"
+            [(ngModel)]="model.password"
+            placeholder="Password" value="">
+        </mat-form-field>
+    
+      </form>
+      <button mat-raised-button color="primary" (click)="logout()">Logout</button>
+  </mat-toolbar>
